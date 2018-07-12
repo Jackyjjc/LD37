@@ -21,8 +21,8 @@ public class Clock : MonoBehaviour {
 
     void Awake()
     {
-        hourHand = transform.FindChild("HourHand");
-        minuteHand = transform.FindChild("MinuteHand");
+        hourHand = transform.Find("HourHand");
+        minuteHand = transform.Find("MinuteHand");
         hour = 23;
         minute = 58;
     }

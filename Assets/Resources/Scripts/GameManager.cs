@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
                 // Load the next level
                 if (currentLevel == maxLevel)
                 {
-                    report.transform.FindChild("BodyText").GetComponent<Text>().text = 
+                    report.transform.Find("BodyText").GetComponent<Text>().text = 
                         "Game finished. Thanks for playing! Sorry didn't have time to implement a full game :(";
                     ldfinished = true;
                 } else
@@ -85,6 +85,10 @@ public class GameManager : MonoBehaviour {
             {
                 GameGlobalState.Get().IsPlaying = false;
                 ShowEndReport(currentLevel);
+            } else if (currentLevel == 2 && gameClock.Hour == 12)
+            {
+                GameGlobalState.Get().IsPlaying = false;
+                ShowEndReport(currentLevel);
             }
         }
     }
@@ -98,7 +102,7 @@ public class GameManager : MonoBehaviour {
     {
         report.SetActive(true);
         starting = true;
-        Text text = report.transform.FindChild("BodyText").GetComponent<Text>();
+        Text text = report.transform.Find("BodyText").GetComponent<Text>();
         if (level == 1)
         {
             return;
@@ -118,7 +122,7 @@ public class GameManager : MonoBehaviour {
         GameGlobalState.Get().IsPlaying = false;
 
         string evaluation = CalculateEvaluation(level);
-        Text text = report.transform.FindChild("BodyText").GetComponent<Text>();
+        Text text = report.transform.Find("BodyText").GetComponent<Text>();
         text.text = "";
 
         if (level == 1)
